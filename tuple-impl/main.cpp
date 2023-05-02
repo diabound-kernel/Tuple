@@ -1,13 +1,13 @@
 #include <iostream>
-#include <tuple>
 
 #include "tuple.hpp"
 
 int main()
 {
-    auto tuple = std::make_tuple(1, 2, 3, 4);
+    auto tuple = nonstd::makeTuple(10, " hello world ", 7.4);
 
-    std::cout << nonstd::apply(tuple, [](auto &&...args) {
-        return (args + ...);
-    }) << std::endl;
+    // nonstd::Tuple tuple{10, " hello world ", 7.4};
+
+    nonstd::apply(
+        tuple, [](auto &&...args) { (std::cout << ... << args) << std::endl; });
 }
